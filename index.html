@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<title>Alex Voss — Violet Frequency</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,200;0,300;0,400;1,200&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- Cursors -->
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+<div id="cur-trail"></div>
+
+<!-- Three.js canvas -->
+<canvas id="threejs-bg"></canvas>
+
+<!-- Traveling mascot -->
+<div id="mascot">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="mg" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#c084fc"/>
+        <stop offset="100%" stop-color="#7e22ce"/>
+      </radialGradient>
+    </defs>
+    <circle cx="50" cy="50" r="42" fill="url(#mg)" opacity=".15"/>
+    <circle cx="50" cy="50" r="42" fill="none" stroke="#c084fc" stroke-width="1.5" opacity=".7"/>
+    <!-- cat body -->
+    <path d="M28,55 Q30,38 50,36 Q70,38 72,55 Q70,72 50,74 Q30,72 28,55Z" fill="#c084fc"/>
+    <!-- ears -->
+    <polygon points="33,38 28,25 40,35" fill="#c084fc"/>
+    <polygon points="67,38 72,25 60,35" fill="#c084fc"/>
+    <polygon points="34,36 30,26 39,34" fill="#e9d5ff" opacity=".5"/>
+    <polygon points="66,36 70,26 61,34" fill="#e9d5ff" opacity=".5"/>
+    <!-- eyes -->
+    <ellipse cx="40" cy="53" rx="5" ry="5.5" fill="#03020a"/>
+    <ellipse cx="60" cy="53" rx="5" ry="5.5" fill="#03020a"/>
+    <circle cx="41.5" cy="51.5" r="1.5" fill="#fff"/>
+    <circle cx="61.5" cy="51.5" r="1.5" fill="#fff"/>
+    <!-- nose & mouth -->
+    <polygon points="50,60 48,57 52,57" fill="#ff89c0" opacity=".8"/>
+    <path d="M47,61 Q50,64 53,61" stroke="#03020a" stroke-width="1.2" fill="none"/>
+    <!-- whiskers -->
+    <line x1="28" y1="58" x2="42" y2="60" stroke="#e9d5ff" stroke-width=".8" opacity=".6"/>
+    <line x1="27" y1="62" x2="41" y2="62" stroke="#e9d5ff" stroke-width=".8" opacity=".6"/>
+    <line x1="58" y1="60" x2="72" y2="58" stroke="#e9d5ff" stroke-width=".8" opacity=".6"/>
+    <line x1="59" y1="62" x2="73" y2="62" stroke="#e9d5ff" stroke-width=".8" opacity=".6"/>
+    <!-- tail -->
+    <path d="M68,68 Q80,60 78,48 Q76,40 82,36" stroke="#c084fc" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </svg>
+</div>
+
+<!-- ====== NAV ====== -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">HR.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#works-sticky">Works</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="main">
+
+  <!-- ====== HERO ====== -->
+  <section id="hero">
+    <div class="hero-rings" aria-hidden="true">
+      <div class="hero-ring"></div>
+      <div class="hero-ring"></div>
+      <div class="hero-ring"></div>
+      <div class="hero-ring"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Available for Work &nbsp;·&nbsp; Web Developer</div>
+      <h1 class="hero-name">
+        <span class="line1">HARISH</span>
+        <span class="line2">RAGAVENDRA</span>
+      </h1>
+      <p class="hero-sub">violet frequency &nbsp;·&nbsp; interactive first impressions &nbsp;·&nbsp; digital architecture</p>
+      <div class="hero-btns">
+        <a href="#works-sticky" class="btn-v solid">View Work</a>
+        <a href="#contact" class="btn-v ghost">Contact Me</a>
+      </div>
+    </div>
+    <div class="scroll-cue">
+      <div class="scroll-cue-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ====== ABOUT ====== -->
+  <section id="about">
+    <div class="about-layout">
+      <div class="sr-l">
+        <div class="about-number">06</div>
+      </div>
+      <div class="about-text-block sr-r">
+        <span class="section-label">/ About</span>
+        <h2>Web<br/>Developer</h2>
+        <p>I am a <strong>web developer</strong> with strong experience in building 
+            <strong>Wordpress and Shopify websites</strong> and modern business websites.
+            I focus on creating clean, fast, and conversion-friendly designs.
+            </p>
+
+            <p>
+            I can build <strong>simple static websites within 1 week</strong> and 
+            complete e-commerce solutions with proper structure, SEO, and responsiveness.
+            My goal is to deliver websites that actually bring results for clients.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== STICKY HORIZONTAL WORKS ====== -->
+  <div id="works-sticky">
+    <div id="works-pin">
+      <div class="works-header sr">
+        <div>
+          <span style="font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--v3);display:block;margin-bottom:8px">/ Recent Work</span>
+          <h2>MY PROJECTS</h2>
+        </div>
+        <div class="works-progress">
+          <span id="workProgress">01 / 10</span>
+        </div>
+      </div>
+      <div class="works-track-wrap">
+        <div class="works-track" id="worksTrack">
+
+          <div class="work-card" onclick="window.open('https://www.awwwards.com','_blank')">
+            <div class="work-card-img" style="background-image:url('https://picsum.photos/id/20/500/300')"></div>
+            <div class="work-card-body">
+              <div class="work-card-num">01 / 10</div>
+              <div class="work-card-title">LUMINA SPACE</div>
+              <p class="work-card-desc">Interactive 3D brand journey with WebGL environments and immersive scroll storytelling.</p>
+              <div class="work-card-tags"><span class="wtag">WebGL</span><span class="wtag">Three.js</span><span class="wtag">GSAP</span></div>
+              <a class="work-card-link" href="#">visit →</a>
+            </div>
+          </div>
+
+          <div class="work-card" onclick="window.open('https://threejs.org/examples/','_blank')">
+            <div class="work-card-img" style="background-image:url('https://picsum.photos/id/26/500/300')"></div>
+            <div class="work-card-body">
+              <div class="work-card-num">02 / 10</div>
+              <div class="work-card-title">FRAGMENT STUDIO</div>
+              <p class="work-card-desc">Generative shader art and real-time particle systems with custom GLSL.</p>
+              <div class="work-card-tags"><span class="wtag">GLSL</span><span class="wtag">WebGPU</span></div>
+              <a class="work-card-link" href="#">visit →</a>
+            </div>
+          </div>
+
+          <div class="work-card" onclick="window.open('https://www.behance.net','_blank')">
+            <div class="work-card-img" style="background-image:url('https://picsum.photos/id/29/500/300')"></div>
+            <div class="work-card-body">
+              <div class="work-card-num">03 / 10</div>
+              <div class="work-card-title">ECHO VOID</div>
+              <p class="work-card-desc">Audio-reactive installation with real-time frequency analysis and generative visuals.</p>
+              <div class="work-card-tags"><span class="wtag">Web Audio</span><span class="wtag">Canvas</span></div>
+              <a class="work-card-link" href="#">visit →</a>
+            </div>
+          </div>
+
+          <div class="work-card" onclick="window.open('https://dribbble.com','_blank')">
+            <div class="work-card-img" style="background-image:url('https://picsum.photos/id/42/500/300')"></div>
+            <div class="work-card-body">
+              <div class="work-card-num">04 / 10</div>
+              <div class="work-card-title">NEON PARALLAX</div>
+              <p class="work-card-desc">Cinematic scroll experience with violet gradients and depth-layered typography.</p>
+              <div class="work-card-tags"><span class="wtag">Next.js</span><span class="wtag">Framer</span></div>
+              <a class="work-card-link" href="#">visit →</a>
+            </div>
+          </div>
+
+          <div class="work-card" onclick="window.open('https://github.com','_blank')">
+            <div class="work-card-img" style="background-image:url('https://picsum.photos/id/76/500/300')"></div>
+            <div class="work-card-body">
+              <div class="work-card-num">05 / 10</div>
+              <div class="work-card-title">WEBGL CORE</div>
+              <p class="work-card-desc">High-performance 3D product configurator with real-time material switching.</p>
+              <div class="work-card-tags"><span class="wtag">Three.js</span><span class="wtag">React</span></div>
+              <a class="work-card-link" href="#">visit →</a>
+            </div>
+          </div>
+
+          <div class="work-card" onclick="window.open('https://www.netlify.com','_blank')">
+            <div class="work-card-img" style="background-image:url('https://picsum.photos/id/96/500/300')"></div>
+            <div class="work-card-body">
+              <div class="work-card-num">06 / 10</div>
+              <div class="work-card-title">VISIONARY LAB</div>
+              <p class="work-card-desc">AI-driven creative suite with real-time image generation and prompt engineering UI.</p>
+              <div class="work-card-tags"><span class="wtag">AI</span><span class="wtag">Python</span><span class="wtag">FastAPI</span></div>
+              <a class="work-card-link" href="#">visit →</a>
+            </div>
+          </div>
+
+          <div class="work-card" onclick="window.open('https://www.creativebloq.com','_blank')">
+            <div class="work-card-img" style="background-image:url('https://picsum.photos/id/119/500/300')"></div>
+            <div class="work-card-body">
+              <div class="work-card-num">07 / 10</div>
+              <div class="work-card-title">MAGMA STUDIO</div>
+              <p class="work-card-desc">Design portfolio with fluid page transitions and magnetic hover interactions.</p>
+              <div class="work-card-tags"><span class="wtag">GSAP</span><span class="wtag">Barba.js</span></div>
+              <a class="work-card-link" href="#">visit →</a>
+            </div>
+          </div>
+
+          <div class="work-card" onclick="window.open('https://www.smashingmagazine.com','_blank')">
+            <div class="work-card-img" style="background-image:url('https://picsum.photos/id/155/500/300')"></div>
+            <div class="work-card-body">
+              <div class="work-card-num">08 / 10</div>
+              <div class="work-card-title">TYPOGRAPHIC WAVE</div>
+              <p class="work-card-desc">Kinetic typography experiments with variable font animations and scroll choreography.</p>
+              <div class="work-card-tags"><span class="wtag">CSS Houdini</span><span class="wtag">GSAP</span></div>
+              <a class="work-card-link" href="#">visit →</a>
+            </div>
+          </div>
+
+          <div class="work-card" onclick="window.open('https://www.figma.com','_blank')">
+            <div class="work-card-img" style="background-image:url('https://picsum.photos/id/169/500/300')"></div>
+            <div class="work-card-body">
+              <div class="work-card-num">09 / 10</div>
+              <div class="work-card-title">DARK MATTER UI</div>
+              <p class="work-card-desc">Violet design system with 200+ components, dark theme tokens, and Storybook integration.</p>
+              <div class="work-card-tags"><span class="wtag">Design System</span><span class="wtag">Figma</span></div>
+              <a class="work-card-link" href="#">visit →</a>
+            </div>
+          </div>
+
+          <div class="work-card" onclick="window.open('https://vercel.com','_blank')">
+            <div class="work-card-img" style="background-image:url('https://picsum.photos/id/177/500/300')"></div>
+            <div class="work-card-body">
+              <div class="work-card-num">10 / 10</div>
+              <div class="work-card-title">DEPLOY STUDIO</div>
+              <p class="work-card-desc">JAMstack portfolio platform with edge rendering and instant global deployments.</p>
+              <div class="work-card-tags"><span class="wtag">Astro</span><span class="wtag">Edge</span><span class="wtag">Vercel</span></div>
+              <a class="work-card-link" href="#">visit →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== SERVICES ====== -->
+  <section id="services">
+    <div class="section-header sr">
+      <span class="section-label">/ Services</span>
+      <h2>E-COMMERCE ECOSYSTEMS</h2>
+      <p>Every platform, every integration — architected to convert.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card sr" style="transition-delay:.05s">
+        <span class="svc-icon"><i class="fab fa-wordpress"></i></span>
+        <h3>WordPress</h3>
+        <p>Custom themes, WooCommerce integration, high-performance stores & refined admin experiences.</p>
+      </div>
+      <div class="svc-card sr" style="transition-delay:.1s">
+        <span class="svc-icon"><i class="fab fa-shopify"></i></span>
+        <h3>Shopify</h3>
+        <p>Headless commerce, liquid customization, conversion-focused design & custom apps.</p>
+      </div>
+      <div class="svc-card sr" style="transition-delay:.15s">
+        <span class="svc-icon"><i class="fas fa-store"></i></span>
+        <h3>E-Commerce</h3>
+        <p>Custom platforms, payment gateways, scalable product catalogues & analytics dashboards.</p>
+      </div>
+      <div class="svc-card sr" style="transition-delay:.2s">
+        <span class="svc-icon"><i class="fas fa-chart-line"></i></span>
+        <h3>Performance SEO</h3>
+        <p>Core web vitals, rich snippets, structured data and data-driven growth for online stores.</p>
+      </div>
+      <div class="svc-card sr" style="transition-delay:.25s">
+        <span class="svc-icon"><i class="fas fa-layer-group"></i></span>
+        <h3>Web Templates</h3>
+        <p>Modern, high-converting website templates designed for speed, UI clarity, and user engagement.</p>
+      </div>
+      <div class="svc-card sr" style="transition-delay:.3s">
+        <span class="svc-icon"><i class="fas fa-code"></i></span>
+        <h3>Custom Code Development</h3>
+        <p>Clean, scalable custom-coded websites tailored to your business needs with high performance and flexibility.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SKILLS ====== -->
+  <section id="skills">
+    <div class="section-header sr">
+      <span class="section-label">/ Stack</span>
+      <h2>TECH & TOOLS</h2>
+    </div>
+    <div class="skills-grid">
+        <div class="skill-pill"><span class="skill-emoji">🌐</span><div class="skill-name">WordPress</div></div>
+        <div class="skill-pill"><span class="skill-emoji">🛍️</span><div class="skill-name">Shopify</div></div>
+        <div class="skill-pill"><span class="skill-emoji">🧩</span><div class="skill-name">Elementor</div></div>
+        <div class="skill-pill"><span class="skill-emoji">📄</span><div class="skill-name">Templates</div></div>
+        <div class="skill-pill"><span class="skill-emoji">📱</span><div class="skill-name">Responsive Design</div></div>
+        <div class="skill-pill"><span class="skill-emoji">💳</span><div class="skill-name">E-Commerce</div></div>
+    </div>
+  </section>
+
+  <!-- ====== PROCESS ====== -->
+  <section id="process">
+    <div class="section-header sr">
+      <span class="section-label">/ Process</span>
+      <h2>HOW I WORK</h2>
+    </div>
+    <div class="process-steps">
+      <div class="pstep sr" style="transition-delay:.1s">
+        <div class="pstep-num">01</div>
+        <h3>Select Template</h3>
+        <p>Choose attractive and modern templates based on business goals and user experience.</p>
+      </div>
+      <div class="pstep sr" style="transition-delay:.2s">
+        <div class="pstep-num">02</div>
+        <h3>SEO Content</h3>
+        <p>Craft proper content with SEO optimization to improve visibility and engagement.</p>
+      </div>
+      <div class="pstep sr" style="transition-delay:.3s">
+        <div class="pstep-num">03</div>
+        <h3>Responsive Build</h3>
+        <p>Develop fully responsive websites that work perfectly on all devices.</p>
+      </div>
+      <div class="pstep sr" style="transition-delay:.4s">
+        <div class="pstep-num">04</div>
+        <h3>Final Delivery</h3>
+        <p>Deliver optimized, tested, and ready-to-launch websites with full support.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TESTIMONIALS (auto-scroll ticker) ====== -->
+  <section id="testimonials">
+    <div class="section-header sr">
+      <span class="section-label">/ Testimonials</span>
+      <h2>WHAT CLIENTS SAY</h2>
+    </div>
+    <div style="overflow:hidden; margin-top:48px;">
+      <div class="testi-ticker" id="testiTicker">
+        <!-- 4 real + 4 duplicates for infinite loop -->
+        <div class="testi-item">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Alex is one of those rare developers who genuinely understands product thinking. He built what we needed, not just what we asked."</p>
+          <div class="testi-author"><div class="testi-av">SK</div><div><div class="testi-name">Sarah Kim</div><div class="testi-role">CTO, NexaFlow</div></div></div>
+        </div>
+        <div class="testi-item">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"The attention to detail is remarkable. Every animation feels intentional. Our conversion rate jumped 34% after the redesign."</p>
+          <div class="testi-author"><div class="testi-av">JM</div><div><div class="testi-name">James Moreau</div><div class="testi-role">Founder, Luminary</div></div></div>
+        </div>
+        <div class="testi-item">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Delivered ahead of schedule. The code is immaculate — well-documented, tested, and easy to extend. Our go-to for serious engineering."</p>
+          <div class="testi-author"><div class="testi-av">AR</div><div><div class="testi-name">Anika Rajan</div><div class="testi-role">Lead, AuraAI</div></div></div>
+        </div>
+        <div class="testi-item">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Communication 10/10. Proactive about surfacing issues. The final product was polished, performant, and exactly what we envisioned."</p>
+          <div class="testi-author"><div class="testi-av">TW</div><div><div class="testi-name">Tom Walsh</div><div class="testi-role">CEO, FitSync</div></div></div>
+        </div>
+        <!-- duplicates -->
+        <div class="testi-item">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Alex is one of those rare developers who genuinely understands product thinking. He built what we needed, not just what we asked."</p>
+          <div class="testi-author"><div class="testi-av">SK</div><div><div class="testi-name">Sarah Kim</div><div class="testi-role">CTO, NexaFlow</div></div></div>
+        </div>
+        <div class="testi-item">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"The attention to detail is remarkable. Every animation feels intentional. Our conversion rate jumped 34% after the redesign."</p>
+          <div class="testi-author"><div class="testi-av">JM</div><div><div class="testi-name">James Moreau</div><div class="testi-role">Founder, Luminary</div></div></div>
+        </div>
+        <div class="testi-item">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Delivered ahead of schedule. The code is immaculate — well-documented, tested, and easy to extend. Our go-to for serious engineering."</p>
+          <div class="testi-author"><div class="testi-av">AR</div><div><div class="testi-name">Anika Rajan</div><div class="testi-role">Lead, AuraAI</div></div></div>
+        </div>
+        <div class="testi-item">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Communication 10/10. Proactive about surfacing issues. The final product was polished, performant, and exactly what we envisioned."</p>
+          <div class="testi-author"><div class="testi-av">TW</div><div><div class="testi-name">Tom Walsh</div><div class="testi-role">CEO, FitSync</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CONTACT ====== -->
+  <section id="contact">
+    <div class="contact-glow-bg"></div>
+    <div class="contact-inner">
+      <span style="font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--v3);display:block;margin-bottom:1rem">/ Contact</span>
+      <h2 class="contact-title sr">LET'S BUILD TOGETHER</h2>
+      <p class="contact-sub sr">Available for select projects. Let's make something extraordinary.</p>
+
+
+      <form class="contact-form sr" id="contactForm">
+
+  <div class="form-row">
+    <input class="form-field" type="text" id="name" placeholder="Name" required/>
+    <input class="form-field" type="email" id="email" placeholder="Email" required/>
+  </div>
+
+  <input class="form-field" type="text" id="budget" placeholder="Project Budget (e.g. ₹10k–₹50k)"/>
+  
+  <textarea class="form-field" id="message" placeholder="Tell me about your project..." required></textarea>
+
+  <button type="submit" class="btn-v solid" style="width:100%;padding:18px;font-size:.85rem;border-radius:14px;">
+    Send Message →
+  </button>
+
+</form>
+
+
+      <div class="contact-socials sr">
+        <a href="https://wa.me/919445424003" class="soc-btn" target="_blank"><i class="fab fa-whatsapp"></i>&nbsp;WhatsApp</a>
+        <a href="https://www.instagram.com/harish.ragaven/" target="_blank" class="soc-btn"><i class="fab fa-instagram"></i>&nbsp;Instagram</a>
+        <a href="mailto:harishragavendra3412@gmail.com" class="soc-btn" target="_blank"><i class="fas fa-envelope"></i>&nbsp;Email</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+  <span>HARISH RAGAVENDRA — <span>WEB DEVELOPER</span></span>
+  <span>© 2026 — ALL RIGHTS RESERVED</span>
+  <span>WEBSITES BUILT FASTER ⚡</span>
+</footer>
+
+</div><!-- /.main -->
+
+<script type="importmap">{"imports":{"three":"https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js"}}</script>
+<script type="module" src="script.js"></script>
+</body>
+</html>
