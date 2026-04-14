@@ -1,3 +1,15 @@
+const avatar = document.getElementById("avatar");
+
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+
+  // Convert scroll into rotation (0 → 360deg)
+  const rotation = (scrollTop / docHeight) * 360;
+
+  avatar.style.transform = `rotateY(${rotation}deg)`;
+});
+
 // ============================================
 // THREE.JS BACKGROUND
 // ============================================

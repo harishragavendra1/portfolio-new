@@ -1,23 +1,17 @@
 .avatar-container {
-  perspective: 1000px;
+  height: 200vh; /* gives scroll space */
   display: flex;
   justify-content: center;
   align-items: center;
+  perspective: 1000px;
 }
 
 .avatar {
   width: 250px;
-  animation: rotate360 6s linear infinite;
   transform-style: preserve-3d;
-}
-
-@keyframes rotate360 {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(360deg);
-  }
+  transition: transform 0.1s linear;
+  position: sticky;
+  top: 30%;
 }
 
 
