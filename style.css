@@ -1,3 +1,26 @@
+.avatar-container {
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar {
+  width: 250px;
+  animation: rotate360 6s linear infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+
 /* =============================================
    ROOT & RESET
    ============================================= */
