@@ -316,8 +316,7 @@ nav.stuck {
   display: flex; gap: 28px;
   transition: transform .05s linear;
   will-change: transform;
-  padding: 20px 0;
-  padding-right: 80px !important;
+  padding: 40px 0;
 }
 /* work card */
 .work-card {
