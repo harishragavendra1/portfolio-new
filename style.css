@@ -685,3 +685,9 @@ footer span { color: var(--v3); }
     justify-content: left;
   }
 }
+
+@media (max-width: 768px) {
+  .hero-inner {
+    padding: 0 20px;
+  }
+}
