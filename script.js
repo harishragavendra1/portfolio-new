@@ -160,7 +160,15 @@ function updateHorizontal() {
   const scrolled = Math.min(Math.max(-rect.top, 0), total);
   const progress = total > 0 ? scrolled / total : 0;
 
-  const maxTranslate = Math.max(0, track.scrollWidth - window.innerWidth);
+  // ✅ FIX START
+  const styles = getComputedStyle(track);
+  const gap = parseInt(styles.gap) || 0;
+
+  const maxTranslate = Math.max(
+    0,
+    track.scrollWidth - window.innerWidth + gap
+  );
+  // ✅ FIX END
 
   track.style.transform = `translateX(-${progress * maxTranslate}px)`;
 
@@ -169,6 +177,9 @@ function updateHorizontal() {
 
   progEl.textContent = `${String(cardIdx + 1).padStart(2, "0")} / ${totalCards}`;
 }
+
+window.addEventListener('scroll', updateHorizontal, { passive: true });
+updateHorizontal();
 window.addEventListener('scroll', updateHorizontal, { passive: true });
 updateHorizontal();
 
