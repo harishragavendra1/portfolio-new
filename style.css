@@ -660,3 +660,28 @@ footer span { color: var(--v3); }
   .work-card { width: 300px; }
   .services-grid, .skills-grid { grid-template-columns: 1fr; }
 }
+
+@media (max-width: 768px) {
+  .avatar {
+    position: relative;
+    top: auto;
+    left: auto !important;
+
+    display: block;
+    margin: 0 auto;
+
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .sr-l {
+    display: flex;
+    justify-content: center;
+  }
+}
